@@ -59,8 +59,8 @@ The Edge Function uses Supabase's server-side `SUPABASE_URL` and `SUPABASE_SERVI
 Open `index.html`, near the bottom, and replace:
 
 ```js
-const SUPABASE_URL = "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE";
-const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+const SUPABASE_URL = "https://cexxbycchktjojowfsfg.supabase.co/rest/v1/functions/v1/hunt";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNleHhieWNjaGt0am9qb3dmc2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2NjI5OTQsImV4cCI6MjEwODIzODk5NH0.yBP4nXhS8jradoU_9qeaVivZxOzddvW9V6gEe7kwCdM";
 ```
 
 with your project URL and public anon/publishable key. The anon key is designed to be public; never use a service-role key here.
