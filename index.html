@@ -1,94 +1,350 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+
 <meta name="theme-color" content="#101712"><title>Halloween Hunt 10</title>
+
 <style>
+
 :root{--bg:#100b18;--panel:#21142b;--ink:#fff5e8;--muted:#c0b2c9;--purple:#b56aff;--gold:#ffad42;--line:#493052;--red:#ff9eaa;--green:#a6edc2}
+
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#48205e 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#512b18 0,transparent 32%),radial-gradient(ellipse at 50% 100%,#21112f 0,transparent 55%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+
 button,input{font:inherit}button{cursor:pointer}.wrap{width:min(1020px,100%);margin:auto;padding:18px 14px 42px}
+
 header{text-align:center;padding:25px 10px 18px}.sigil{font-size:30px;color:var(--gold);letter-spacing:.28em}.eyebrow{font:800 11px/1.4 system-ui,sans-serif;letter-spacing:.22em;color:#e0b9ff;text-transform:uppercase}
+
 h1{font-size:clamp(2.5rem,9vw,5rem);line-height:.98;margin:12px 0;color:#fff6e8;text-shadow:0 4px 32px #b56aff66;letter-spacing:.025em;font-weight:950}.subtitle{color:#e6c8ff;font-size:1.08rem}
+
 .rule{height:2px;background:linear-gradient(90deg,transparent,#b56aff,#ffad42,transparent);margin:18px 0}
+
 .card{background:linear-gradient(145deg,#281936f2,#171020f7);border:1px solid var(--line);border-radius:18px;padding:clamp(17px,3vw,28px);box-shadow:0 18px 60px #0006;margin:16px 0;backdrop-filter:blur(6px)}
+
 .card h2{margin:0 0 10px;font-size:1.5rem}.muted{color:var(--muted)}.small{font:13px/1.5 system-ui,sans-serif;color:var(--muted)}
+
 label{display:block;margin:14px 0 6px;font:800 12px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#ffd09a}
+
 input{width:100%;border-radius:10px;border:1px solid #674477;background:#110b18;color:white;padding:13px 14px;outline:none}input:focus{border-color:var(--purple);box-shadow:0 0 0 3px #b56aff33}
+
 .btn{border:0;border-radius:10px;background:linear-gradient(135deg,#ff9f32,#e56b20);color:#211127;font-weight:850;padding:12px 16px;box-shadow:0 5px 18px #0004}.btn:hover{filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:wait}.btn.secondary{background:#30203c;border:1px solid #654778;color:#f8eaff;box-shadow:none}.btn.full{width:100%;margin-top:16px}
+
 .status{margin-top:14px;padding:12px;border-radius:10px;background:#2b1c37;color:var(--muted);font:14px/1.45 system-ui,sans-serif}.status.error{background:#3a2028;color:#ffc1c8}.status.good{background:#1e352b;color:var(--green)}.hidden{display:none!important}
+
 .topline{display:flex;justify-content:space-between;gap:12px;align-items:center;font:800 11px system-ui,sans-serif;letter-spacing:.1em;color:#e0b9ff;text-transform:uppercase}
+
 .pill{display:inline-block;border:1px solid #674477;border-radius:999px;padding:4px 10px;color:#ffd09a;font:11px system-ui,sans-serif}
+
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+
 .case{min-height:155px;text-align:left;padding:15px;border:1px solid #51365e;border-radius:14px;background:linear-gradient(145deg,#30203d,#1b1225);color:var(--ink);display:flex;flex-direction:column;gap:8px;transition:transform .15s,border-color .15s,box-shadow .15s}
+
 .case:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 8px 24px #0003}.case .icon{font-size:27px}.case .case-title{font-weight:800;font-size:15px}.case .case-state{font:11px system-ui,sans-serif;color:var(--muted);margin-top:auto}
+
 .case.done{border-color:#6c985f;background:linear-gradient(145deg,#253927,#1b1225)}.case.done .case-state{color:var(--green)}.case.active{border-color:var(--purple)}
+
 .progress{height:7px;background:#100b18;border-radius:20px;overflow:hidden;margin:14px 0}.bar{height:100%;width:0;background:linear-gradient(90deg,#9c4dff,#ff9f32);transition:width .3s}
+
 .riddle{font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.5;margin:18px 0}.seal{font-size:38px;text-align:center;margin:0 0 8px}.clue{border:1px dashed #b56aff;border-radius:12px;padding:16px;background:#21142b;margin-top:18px}.clue h3{color:var(--gold);margin:0 0 8px;font-size:1.1rem}.clue img{display:block;width:100%;height:auto;max-height:600px;object-fit:contain;border-radius:8px;background:#110b18;margin-top:10px}.clue-caption{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin-top:8px}
+
 table{width:100%;border-collapse:collapse;font:14px system-ui,sans-serif}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid #493052}th{color:#ffd09a;font-size:11px;text-transform:uppercase;letter-spacing:.08em}td:last-child,th:last-child{text-align:right}.rank{color:var(--gold);font-weight:800}
+
 .foot{text-align:center;font:12px system-ui,sans-serif;color:#a28eaf;padding:18px}
+
 @media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.case{min-height:135px}}
+
 @media(max-width:420px){.wrap{padding:10px 10px 28px}.grid{gap:8px}.case{padding:11px;min-height:125px}.card{border-radius:14px}}
+
 </style></head>
+
 <body><div class="wrap">
-<header><div class="sigil">🎃 ✦ 🦇 ✦ 👻</div><div class="eyebrow">A spooky Halloween adventure</div><h1>HALLOWEEN<br>HUNT 10</h1><div class="subtitle">Eight riddles. Mysterious clues. One unforgettable Halloween hunt.</div></header>
+
+<header><div class="sigil">🎃 ✦ 🦇 ✦ 👻</div><div class="eyebrow">A spooky Halloween adventure</div><h1>HALLOWEEN<br>HUNT 10</h1><div class="subtitle">Ten riddles. Mysterious clues. One unforgettable Halloween hunt.</div></header>
+
 <div class="rule"></div>
 
+
+
 <section id="setup" class="card">
+
   <div class="seal">🎃</div><h2>Enter, if you dare.</h2>
-  <p class="muted">Eight Halloween mysteries await, and you may solve them in any order. Solve a riddle to unlock its hidden image clue. Your progress is saved on this device so you can return later.</p>
+
+  <p class="muted">Ten Halloween mysteries await, and you may solve them in any order. Solve a riddle to unlock its hidden image clue. Your progress is saved on this device so you can return later.</p>
+
   <label for="playerName">Investigator name or nickname</label><input id="playerName" maxlength="40" autocomplete="nickname" placeholder="Enter your name">
+
   <button id="startBtn" class="btn full">Start the hunt</button><div id="setupStatus" class="status hidden" role="status"></div>
+
   <p class="small">Completed investigations appear on the shared leaderboard. Choose a nickname if you prefer not to use your full name.</p>
+
 </section>
 
+
+
 <section id="hunt" class="hidden">
+
   <div class="card"><div class="topline"><span>Halloween field notes</span><span id="nameLabel" class="pill"></span></div>
+
     <h2>Choose a mystery to explore</h2><p class="muted">Explore the mysteries in any order. Each riddle can be solved once; its image clue stays unlocked after you solve it.</p>
+
     <div class="progress"><div id="progressBar" class="bar"></div></div><div id="progressText" class="small"></div>
+
     <div id="caseGrid" class="grid"></div>
+
     <div id="huntStatus" class="status hidden" role="status"></div>
+
   </div>
+
   <section id="casePanel" class="card hidden">
+
     <div class="topline"><span id="caseNumber">CASE 01</span><span id="caseBadge" class="pill">Unsolved</span></div>
+
     <div class="seal" id="riddleIcon">🕯️</div><h2 id="riddleTitle"></h2><p id="riddleText" class="riddle"></p>
+
     <form id="answerForm"><label for="answer">Your answer</label><input id="answer" maxlength="100" autocomplete="off" placeholder="Type your answer..." required>
+
     <button id="submitBtn" class="btn full" type="submit">Submit answer</button></form>
+
     <div id="answerStatus" class="status hidden" role="status"></div>
+
     <div id="cluePanel" class="clue hidden"><h3>✦ The clue is yours ✦</h3><p id="clueIntro" class="muted">Study this image carefully. It points toward your next discovery.</p><img id="clueImage" alt="Unlocked scavenger hunt clue image"><div id="clueImageError" class="status error hidden">The clue image could not load. Check that the image exists in the private clue-images bucket.</div><div class="clue-caption">This clue remains unlocked for this investigator.</div></div>
+
     <button id="backBtn" class="btn secondary full">Back to all mysteries</button>
+
   </section>
+
 </section>
+
+
 
 <section id="finish" class="card hidden"><div class="seal">🏆</div><h2>The curse is broken.</h2><p id="finishText" class="riddle"></p><p class="muted">Your completion time has been recorded on the shared leaderboard.</p><button id="returnBtn" class="btn secondary full">Review the mysteries</button></section>
 
+
+
 <section id="leaderboard" class="card"><div class="topline"><span>🏆 Hall of the Fearless</span><span class="pill">Leaderboard</span></div><h2>Completed Investigations</h2><p class="small">Completed players are ranked by elapsed time. Refresh to see the latest records.</p><div id="leaderboardContent" class="muted">Loading the archives…</div><button id="refreshBoard" class="btn secondary full">Refresh leaderboard</button></section>
+
 <div class="foot">HALLOWEEN HUNT 10 · Have fun, stay spooky, and trust your instincts!</div>
+
 </div>
+
 <script>
+
 /* Configure these after creating your Supabase project. Use the public anon/publishable key only. */
-const SUPABASE_URL = "https://cexxbycchktjojowfsfg.supabase.co/functions/v1/hunt";
+
+const SUPABASE_URL = "https://cexxbycchktjojowfsfg.supabase.co";
+
 const SUPABASE_ANON_KEY = "sb_publishable_z7AmJPnHPyAbNw6aqz1GUA_iSgCFP5C";
-const FUNCTION_URL = SUPABASE_URL.replace(/\/$/, "") + "/functions/v1/hunt";
-const STORAGE_KEY = "haunted-hunt-session-v2";
+
+const FUNCTION_URL = SUPABASE_URL.replace(/\/$/, "") + "/functions/v1/Hunt";
+
+const STORAGE_KEY = "haunted-hunt-session-v3";
+
 const $ = id => document.getElementById(id);
-let session = null, activeCase = null, unlocked = {}, riddleList = [];
+
+let session = null, accessToken = null, activeCase = null, unlocked = {}, riddleList = [];
+
+
 
 function configured(){return SUPABASE_URL.startsWith("https://")&&!SUPABASE_URL.includes("PASTE_")&&SUPABASE_ANON_KEY&&!SUPABASE_ANON_KEY.includes("PASTE_");}
+
 function status(id,msg,type=""){const el=$(id);el.textContent=msg;el.className="status"+(type?" "+type:"");el.classList.remove("hidden");}
+
 function hideStatus(id){$(id).classList.add("hidden");}
+
 function busy(btn,on,label){if(on){btn.dataset.original=btn.textContent;btn.disabled=true;btn.textContent=label||"Consulting the spirits…";}else{btn.disabled=false;btn.textContent=btn.dataset.original||label||"Submit";}}
+
 async function api(action,data={}){if(!configured())throw new Error("The app isn't connected yet. Follow README.md to add your Supabase project URL and public anon key.");const res=await fetch(FUNCTION_URL,{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+SUPABASE_ANON_KEY},body:JSON.stringify({action,...data})});const out=await res.json().catch(()=>({error:"Unreadable server response."}));if(!res.ok||out.error)throw new Error(out.error||"Request failed.");return out;}
+
 function show(which){["setup","hunt","finish"].forEach(id=>$(id).classList.toggle("hidden",id!==which));}
+
 function seconds(s){if(s==null)return "—";return `${Math.floor(s/60)}m ${String(s%60).padStart(2,"0")}s`;}
-function applyState(data){session=data.session;unlocked=data.unlocked_clues||{};riddleList=data.riddles||riddleList;localStorage.setItem(STORAGE_KEY,JSON.stringify({session_id:session.id}));$("nameLabel").textContent=session.player_name;renderGrid();if(session.completed_at){show("finish");$("finishText").textContent=`Well done, ${session.player_name}. You solved all eight mysteries.`;loadBoard();return;}show("hunt");}
-function renderGrid(){const grid=$("caseGrid");grid.replaceChildren();const solved=Object.keys(unlocked).length; $("progressBar").style.width=(solved/8*100)+"%";$("progressText").textContent=`${solved} of 8 mysteries solved · Choose any unsolved case or revisit an unlocked clue.`;riddleList.forEach(r=>{const done=Boolean(unlocked[String(r.index)]);const b=document.createElement("button");b.className="case"+(done?" done":"");const icon=document.createElement("div");icon.className="icon";icon.textContent=done?"🔓":r.icon||"🕯️";const title=document.createElement("div");title.className="case-title";title.textContent=`${String(r.index+1).padStart(2,"0")} · ${r.title}`;const state=document.createElement("div");state.className="case-state";state.textContent=done?"CLUE UNLOCKED · VIEW AGAIN":"UNSOLVED · OPEN CASE";b.append(icon,title,state);b.addEventListener("click",()=>openCase(r.index));grid.appendChild(b);});}
-async function openCase(index){activeCase=index;hideStatus("answerStatus");$("casePanel").classList.remove("hidden");$("caseNumber").textContent=`CASE ${String(index+1).padStart(2,"0")} OF 08`;const known=riddleList.find(x=>x.index===index);$("riddleIcon").textContent=known?.icon||"🕯️";$("riddleTitle").textContent=known?.title||`Case ${index+1}`;$("riddleText").textContent=known?.prompt||"";$("answer").value="";const already=unlocked[String(index)];$("caseBadge").textContent=already?"Solved":"Unsolved";$("answerForm").classList.toggle("hidden",Boolean(already));$("cluePanel").classList.toggle("hidden",!already);if(already)showClue(already);else{$("clueImage").removeAttribute("src");} $("casePanel").scrollIntoView({behavior:"smooth",block:"start"});}
+
+function applyState(data){session=data.session;accessToken=data.access_token||accessToken;unlocked=data.unlocked_clues||{};riddleList=data.riddles||riddleList;localStorage.setItem(STORAGE_KEY,JSON.stringify({session_id:session.id,access_token:accessToken}));$("nameLabel").textContent=session.player_name;renderGrid();if(session.completed_at){show("finish");$("finishText").textContent=`Well done, ${session.player_name}. You solved all ten mysteries.`;loadBoard();return;}show("hunt");}
+
+function renderGrid() {
+  const grid = $("caseGrid");
+  grid.replaceChildren();
+
+  const solved = Object.keys(unlocked).length;
+
+  $("progressBar").style.width = (solved / 10 * 100) + "%";
+  $("progressText").textContent =
+    `${solved} of 10 mysteries solved · Choose any unsolved case or revisit an unlocked clue.`;
+
+  riddleList.forEach(r => {
+    const done = Boolean(unlocked[String(r.index)]);
+
+    const b = document.createElement("button");
+    b.className = "case" + (done ? " done" : "");
+
+    const title = document.createElement("div");
+    title.className = "case-title";
+    title.textContent =
+      `${String(r.index + 1).padStart(2, "0")} · ${r.title}`;
+
+    const state = document.createElement("div");
+    state.className = "case-state";
+    state.textContent = done
+      ? "CLUE UNLOCKED · VIEW AGAIN"
+      : "UNSOLVED · OPEN CASE";
+
+    b.append(title, state);
+    b.addEventListener("click", () => openCase(r.index));
+
+    grid.appendChild(b);
+  });
+}
+
+async function openCase(index){activeCase=index;hideStatus("answerStatus");$("casePanel").classList.remove("hidden");$("caseNumber").textContent=`CASE ${String(index+1).padStart(2,"0")} OF 10`;const known=riddleList.find(x=>x.index===index);$("riddleIcon").style.display="none";$("riddleTitle").textContent=known?.title||`Case ${index+1}`;$("riddleText").textContent=known?.prompt||"";$("answer").value="";const already=unlocked[String(index)];$("caseBadge").textContent=already?"Solved":"Unsolved";$("answerForm").classList.toggle("hidden",Boolean(already));$("cluePanel").classList.toggle("hidden",!already);if(already)showClue(already);else{$("clueImage").removeAttribute("src");} $("casePanel").scrollIntoView({behavior:"smooth",block:"start"});}
+
 function showClue(clue){$("cluePanel").classList.remove("hidden");$("clueImageError").classList.add("hidden");$("clueImage").onerror=()=> $("clueImageError").classList.remove("hidden");$("clueImage").src=clue.signed_url;$("clueIntro").textContent=clue.caption||"Study this image carefully. It points toward your next discovery.";}
+
 async function loadBoard(){const el=$("leaderboardContent");el.textContent="Consulting the archives…";try{const out=await api("leaderboard");if(!out.entries.length){el.textContent="No completed investigations yet. Be the first to break the curse.";return;}const t=document.createElement("table"),head=document.createElement("thead"),hr=document.createElement("tr");["Rank","Investigator","Time"].forEach(x=>{const th=document.createElement("th");th.textContent=x;hr.appendChild(th)});head.appendChild(hr);t.appendChild(head);const body=document.createElement("tbody");out.entries.forEach((x,i)=>{const tr=document.createElement("tr");[String(i+1),x.player_name,seconds(x.elapsed_seconds)].forEach((v,j)=>{const td=document.createElement("td");td.textContent=v;if(j===0)td.className="rank";tr.appendChild(td)});body.appendChild(tr)});t.appendChild(body);el.replaceChildren(t);}catch(e){el.textContent="Leaderboard unavailable: "+e.message;}}
-$("startBtn").addEventListener("click",async()=>{const name=$("playerName").value.trim();if(!name){status("setupStatus","Enter an investigator name first.","error");return;}busy($("startBtn"),true,"Opening the gates…");try{const saved=localStorage.getItem(STORAGE_KEY);if(saved){try{const resumed=await api("resume",{session_id:JSON.parse(saved).session_id});applyState(resumed);return;}catch(_){localStorage.removeItem(STORAGE_KEY);}}const out=await api("start",{player_name:name});applyState(out);}catch(e){status("setupStatus",e.message,"error");}finally{busy($("startBtn"),false);}});
-$("answerForm").addEventListener("submit",async ev=>{ev.preventDefault();if(activeCase===null||unlocked[String(activeCase)])return;const answer=$("answer").value.trim();if(!answer)return;busy($("submitBtn"),true,"Checking the answer…");hideStatus("answerStatus");try{const out=await api("answer",{session_id:session.id,riddle_index:activeCase,answer});if(!out.correct){status("answerStatus",out.message||"The spirits reject your answer. Try again.","error");return;}session=out.session;unlocked[String(activeCase)]=out.unlocked_clue;localStorage.setItem(STORAGE_KEY,JSON.stringify({session_id:session.id}));$("caseBadge").textContent="Solved";$("answerForm").classList.add("hidden");showClue(out.unlocked_clue);status("answerStatus","Correct. This image clue is now unlocked and saved.","good");renderGrid();if(session.completed_at){loadBoard();status("huntStatus","All eight mysteries solved. Your completion has been recorded!","good");}}catch(e){status("answerStatus",e.message,"error");}finally{busy($("submitBtn"),false);if(unlocked[String(activeCase)])$("submitBtn").disabled=true;}});
-$("backBtn").addEventListener("click",()=>{activeCase=null;$("casePanel").classList.add("hidden");$("hunt").scrollIntoView({behavior:"smooth",block:"start"});});
-$("returnBtn").addEventListener("click",()=>{show("hunt");renderGrid();});
-$("refreshBoard").addEventListener("click",loadBoard);
-(async function init(){loadBoard();const saved=localStorage.getItem(STORAGE_KEY);if(saved){try{const out=await api("resume",{session_id:JSON.parse(saved).session_id});applyState(out);}catch(_){localStorage.removeItem(STORAGE_KEY);}}})();
-</script></body></html>
+
+$("startBtn").addEventListener("click", async () => {
+  const name = $("playerName").value.trim();
+
+  if (!name) {
+    status("setupStatus", "Enter an investigator name first.", "error");
+    return;
+  }
+
+  busy($("startBtn"), true, "Opening the gates…");
+
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      try {
+        const credentials = JSON.parse(saved);
+        if (!credentials.access_token) {
+          throw new Error("Missing access token");
+        }
+
+        accessToken = credentials.access_token;
+        const resumed = await api("resume", credentials);
+        applyState(resumed);
+        return;
+      } catch (_) {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+
+    const out = await api("start", { player_name: name });
+    applyState(out);
+
+  } catch (e) {
+    status("setupStatus", e.message, "error");
+  } finally {
+    busy($("startBtn"), false);
+  }
+});
+
+$("answerForm").addEventListener("submit", async ev => {
+  ev.preventDefault();
+
+  if (activeCase === null || unlocked[String(activeCase)]) return;
+
+  const answer = $("answer").value.trim();
+  if (!answer) return;
+
+  busy($("submitBtn"), true, "Checking the answer…");
+  hideStatus("answerStatus");
+
+  try {
+    const out = await api("answer", {
+      session_id: session.id,
+      access_token: accessToken,
+      riddle_index: activeCase,
+      answer
+    });
+
+    if (!out.correct) {
+      status("answerStatus", out.message || "Try again.", "error");
+      return;
+    }
+
+    session = out.session;
+    unlocked[String(activeCase)] = out.unlocked_clue;
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      session_id: session.id,
+      access_token: accessToken
+    }));
+
+    $("caseBadge").textContent = "Solved";
+    $("answerForm").classList.add("hidden");
+
+    renderGrid();
+    show("hunt");
+    $("casePanel").classList.remove("hidden");
+
+    showClue(out.unlocked_clue);
+    status("answerStatus", "Correct! Your image clue is unlocked.", "good");
+
+    $("cluePanel").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    if (session.completed_at) {
+      loadBoard();
+      status(
+        "huntStatus",
+        "All ten mysteries solved. Your completion has been recorded!",
+        "good"
+      );
+    }
+
+  } catch (e) {
+    status("answerStatus", e.message, "error");
+  } finally {
+    busy($("submitBtn"), false);
+  }
+});
+
+$("backBtn").addEventListener("click", () => {
+  activeCase = null;
+  $("casePanel").classList.add("hidden");
+  $("hunt").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+$("returnBtn").addEventListener("click", () => {
+  show("hunt");
+  renderGrid();
+});
+
+$("refreshBoard").addEventListener("click", loadBoard);
+
+(async function init() {
+  loadBoard();
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved) {
+    try {
+      const credentials = JSON.parse(saved);
+
+      if (!credentials.access_token) {
+        throw new Error("Missing access token");
+      }
+
+      accessToken = credentials.access_token;
+
+      const out = await api("resume", credentials);
+      applyState(out);
+
+    } catch (_) {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }
+})();
+</script>
+</body>
+</html>
